@@ -4,7 +4,9 @@ import {environment} from "environments/environment";
 import {Observable} from "rxjs";
 import {Country, CountryCode, CountryInfo} from "../symbols";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CountriesService {
   private apiUrl = environment.apiUrl;
 

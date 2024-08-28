@@ -4,7 +4,9 @@ import {CountryCode, PublicHoliday} from "../symbols";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HolidayService {
   private apiUrl = environment.apiUrl;
 
@@ -16,7 +18,7 @@ export class HolidayService {
   }
 
   //Returns the upcoming public holidays for the next 365 days for the given country
-  getNextPublicHoliday(countryCode: CountryCode): Observable<PublicHoliday[]> {
+  getNextPublicHolidays(countryCode: CountryCode): Observable<PublicHoliday[]> {
     const url = `${this.apiUrl}/v3/NextPublicHolidays/${countryCode}`;
     return this.http.get<PublicHoliday[]>(url);
   }
