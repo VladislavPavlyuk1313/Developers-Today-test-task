@@ -83,7 +83,11 @@
 
 .holiday-card__header {
   padding: 8px 16px;
-  background: linear-gradient(150deg, var(--primary-color-600), var(--primary-color-500));
+  background: linear-gradient(
+    150deg,
+    var(--primary-color-600),
+    var(--primary-color-500)
+  );
   color: var(--primary-color-25);
   font-size: 18px;
   font-weight: 600;
@@ -116,14 +120,11 @@
   }
 }
 
-
-
 @media (max-width: 1024px) {
   .holiday-card {
     flex: 1 1 40%;
   }
 }
-
 
 @media (max-width: 768px) {
   .holiday-card {
@@ -135,10 +136,8 @@
   }
 }
 
-
 @media (max-width: 480px) {
   .holidays__header {
     margin-top: 16px;
   }
 }
-

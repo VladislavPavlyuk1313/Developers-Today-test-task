@@ -8,7 +8,6 @@
   justify-content: space-between;
 }
 
-
 .random-countries__body {
   padding: 8px;
   display: flex;
@@ -26,7 +25,11 @@
 
 .country-card__header {
   padding: 8px 16px;
-  background: linear-gradient(150deg, var(--primary-color-600), var(--primary-color-500));
+  background: linear-gradient(
+    150deg,
+    var(--primary-color-600),
+    var(--primary-color-500)
+  );
   color: var(--primary-color-25);
   font-size: 18px;
   font-weight: 600;
@@ -66,13 +69,11 @@
   text-align: center;
 }
 
-
 @media (max-width: 1024px) {
   .random-countries__body {
     flex-direction: column;
   }
 }
-
 
 @media (max-width: 768px) {
   .random-countries__header,
@@ -80,7 +81,6 @@
     font-size: 28px;
   }
 }
-
 
 @media (max-width: 480px) {
   .random-countries__header,

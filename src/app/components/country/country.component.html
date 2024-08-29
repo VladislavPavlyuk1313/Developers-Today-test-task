@@ -1,53 +1,60 @@
-@if({
-  selectedCountryInfo: selectedCountryInfo$ | async,
-  selectedHolidays: selectedHolidays$ | async,
-}; as extracted) {
+@if (
+  {
+    selectedCountryInfo: selectedCountryInfo$ | async,
+    selectedHolidays: selectedHolidays$ | async,
+  };
+  as extracted
+) {
   <div class="country-page">
     <div class="country-page__header">
-      <p class="country-page__common-name">{{extracted.selectedCountryInfo?.commonName}}</p>
-      <p class="country-page__official-name">{{extracted.selectedCountryInfo?.officialName}}</p>
+      <p class="country-page__common-name">
+        {{ extracted.selectedCountryInfo?.commonName }}
+      </p>
+      <p class="country-page__official-name">
+        {{ extracted.selectedCountryInfo?.officialName }}
+      </p>
     </div>
     <div class="country-page__holidays holidays">
-      <div class="holidays__header">
-        Available holidays:
-      </div>
+      <div class="holidays__header">Available holidays:</div>
       <div class="holidays__year-control year-control">
-        <label class="year-control__label">
-          Choose year
-        </label>
+        <label class="year-control__label"> Choose year </label>
         <div class="year-control__options">
           @for (option of yearOptions; track option) {
             <button
               class="year-control__option"
-              [ngClass]="{'year-control__option_active': yearControl.value === option}"
+              [ngClass]="{
+                'year-control__option_active': yearControl.value === option,
+              }"
               (click)="yearControl.setValue(option)"
             >
-              {{option}}
+              {{ option }}
             </button>
           }
         </div>
       </div>
       <div class="holidays__list">
-        @for (holiday of extracted.selectedHolidays; track holiday?.date + holiday?.name) {
+        @for (
+          holiday of extracted.selectedHolidays;
+          track holiday?.date + holiday?.name
+        ) {
           <div class="holidays__item holiday-card">
             <div class="holiday-card__header">
               <span class="holiday-card__name">
-                {{holiday.name}}
+                {{ holiday.name }}
               </span>
               <span class="holiday-card__date">
-                {{holiday.date}}
+                {{ holiday.date }}
               </span>
             </div>
             <div class="holiday-card__body">
               <div class="holiday-card__local-name">
                 <span>Local name:</span>
-                <span>{{holiday.localName}}</span>
+                <span>{{ holiday.localName }}</span>
               </div>
               <div class="holiday-card__local-name">
                 <span>Type:</span>
-                <span>{{holiday.types}}</span>
+                <span>{{ holiday.types }}</span>
               </div>
-
             </div>
           </div>
         }

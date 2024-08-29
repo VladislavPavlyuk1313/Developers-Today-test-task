@@ -1,18 +1,21 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {CountryCode, PublicHoliday} from "../symbols";
-import {environment} from "../../environments/environment";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CountryCode, PublicHoliday } from '../symbols';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HolidayService {
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  getPublicHolidays(year: number, countryCode: CountryCode): Observable<PublicHoliday[]> {
+  getPublicHolidays(
+    year: number,
+    countryCode: CountryCode,
+  ): Observable<PublicHoliday[]> {
     const url = `${this.apiUrl}/v3/PublicHolidays/${year}/${countryCode}`;
     return this.http.get<PublicHoliday[]>(url);
   }

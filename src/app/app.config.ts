@@ -1,13 +1,10 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import {provideHttpClient} from "@angular/common/http";
+import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngxs/store';
-import {AppState} from "./state/app.state";
-import {CountriesService} from "./services/contries.service";
-import {HolidayService} from "./services/holiday.service";
+import { AppState } from './state/app.state';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
@@ -16,6 +13,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
-    provideStore([AppState]), provideAnimationsAsync(), provideAnimationsAsync(),
-  ]
+    provideStore([AppState]),
+    provideAnimationsAsync(),
+    provideAnimationsAsync(),
+  ],
 };

@@ -1,29 +1,37 @@
-@if ({
-  countriesInfoDict: countriesInfoDict$ | async,
-  nextHolidaysDict: nextHolidaysDict$ | async,
-  countries: countries$ | async
-}; as extracted) {
+@if (
+  {
+    countriesInfoDict: countriesInfoDict$ | async,
+    nextHolidaysDict: nextHolidaysDict$ | async,
+    countries: countries$ | async,
+  };
+  as extracted
+) {
   <div class="random-countries">
-    <div class="random-countries__header">
-      The upcoming holidays:
-    </div>
+    <div class="random-countries__header">The upcoming holidays:</div>
     <div class="random-countries__body">
       @for (country of selectedCountries; track country.countryCode) {
-        @if (extracted.nextHolidaysDict?.[country.countryCode]?.[0]; as holiday) {
+        @if (
+          extracted.nextHolidaysDict?.[country.countryCode]?.[0];
+          as holiday
+        ) {
           <div class="country-card">
-          <div class="country-card__header">
-            <a [routerLink]="['/countries', country.countryCode]">
-              {{extracted.countriesInfoDict?.[country.countryCode]?.commonName}}
-            </a>
-            <div class="holiday-info__date">{{holiday.date}}</div>
-          </div>
-          <div class="country-card__body">
+            <div class="country-card__header">
+              <a [routerLink]="['/countries', country.countryCode]">
+                {{
+                  extracted.countriesInfoDict?.[country.countryCode]?.commonName
+                }}
+              </a>
+              <div class="holiday-info__date">{{ holiday.date }}</div>
+            </div>
+            <div class="country-card__body">
               <div class="country-card__holiday holiday-info">
-                <div class="holiday-info__local-name">{{holiday.localName}}</div>
-                <div class="holiday-info__name">{{holiday.name}}</div>
+                <div class="holiday-info__local-name">
+                  {{ holiday.localName }}
+                </div>
+                <div class="holiday-info__name">{{ holiday.name }}</div>
               </div>
+            </div>
           </div>
-        </div>
         }
       }
     </div>

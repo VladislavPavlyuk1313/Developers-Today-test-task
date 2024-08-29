@@ -1,14 +1,13 @@
-<mat-form-field style="width:100%" appearance="outline">
+<mat-form-field style="width: 100%" appearance="outline">
   <mat-label>Search Country</mat-label>
-  <input
-    matInput
-    [formControl]="searchControl"
-    [matAutocomplete]="auto"
-  >
+  <input matInput [formControl]="searchControl" [matAutocomplete]="auto" />
   <mat-icon matSuffix>search</mat-icon>
   <mat-autocomplete #auto="matAutocomplete">
     @for (option of options$ | async; track option.countryCode) {
-      <mat-option [value]="option.name" [routerLink]="['/countries', option.countryCode]">
+      <mat-option
+        [value]="option.name"
+        [routerLink]="['/countries', option.countryCode]"
+      >
         {{ option.name }}
       </mat-option>
     }

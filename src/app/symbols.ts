@@ -14,17 +14,17 @@ export interface CountryInfo {
 }
 
 export enum PublicHolidayTypes {
-  PUBLIC = "Public",
+  PUBLIC = 'Public',
   //...
 }
 
 export interface PublicHoliday {
-  date: string,
-  localName: string,
-  name: string,
-  countryCode: CountryCode,
-  global: true,
-  counties: CountryCode[],
-  launchYear: number,
-  types: PublicHolidayTypes[]
+  date: string;
+  localName: string;
+  name: string;
+  countryCode: CountryCode;
+  global: true;
+  counties: CountryCode[];
+  launchYear: number;
+  types: PublicHolidayTypes[];
 }
