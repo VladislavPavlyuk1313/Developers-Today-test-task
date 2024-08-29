@@ -1,0 +1,19 @@
+<div class="countries-page">
+  <div class="countries-page__header">
+    All Available Countries
+  </div>
+  <div class="countries-page__list countries-list">
+    @for (letter of letters$ | async; track letter) {
+      <div class="countries-list__group">
+        <div class="countries-list__group-header">{{letter}}</div>
+        <div class="countries-list__group-items">
+          @for (country of (groupedCountries$ | async)?.[letter]; track country.countryCode) {
+            <div class="countries-list__item">
+              <a [routerLink]="['/countries', country.countryCode]">{{country.name}}</a>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

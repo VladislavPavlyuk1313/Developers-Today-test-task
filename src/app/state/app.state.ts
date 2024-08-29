@@ -71,7 +71,7 @@ export class AppState implements NgxsOnInit {
 
   @Action(FetchAllCountriesFail)
   FetchAllCountriesFail(_: StateContext<AppStateModel>, {error}: FetchAllCountriesFail): void {
-    console.error(`Something went wrong while countries is fetching. Error: ${error}`);
+    console.error(`Something went wrong while countries is fetching. Error: ${JSON.stringify(error)}`);
   }
 
 
@@ -101,7 +101,7 @@ export class AppState implements NgxsOnInit {
 
   @Action(FetchCountryInfoFail)
   FetchCountryInfoFail(_: StateContext<AppStateModel>, {error}: FetchCountryInfoFail): void {
-    console.error(`Something went wrong while country info is fetching. Error: ${error}`);
+    console.error(`Something went wrong while country info is fetching. Error: ${JSON.stringify(error)}`);
   }
 
 
@@ -135,7 +135,7 @@ export class AppState implements NgxsOnInit {
 
   @Action(FetchPublicHolidaysFail)
   FetchPublicHolidaysFail(_: StateContext<AppStateModel>, {error}: FetchPublicHolidaysFail): void {
-    console.error(`Something went wrong while holidays info is fetching. Error: ${error}`);
+    console.error(`Something went wrong while holidays info is fetching. Error: ${JSON.stringify(error)}`);
   }
 
 
@@ -165,6 +165,6 @@ export class AppState implements NgxsOnInit {
 
   @Action(FetchNextPublicHolidaysFail)
   FetchNextPublicHolidaysFail(_: StateContext<AppStateModel>, {error}: FetchNextPublicHolidaysFail): void {
-    console.error(`Something went wrong while next holidays info is fetching. Error: ${error}`);
+    console.error(`Something went wrong while next holidays info is fetching. Error: ${JSON.stringify(error)}`);
   }
 }

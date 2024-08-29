@@ -1,0 +1,12 @@
+.header {
+  padding: 24px 32px;
+  background: linear-gradient(150deg, var(--primary-color-800), var(--primary-color-700));
+  border-bottom: 2px solid var(--primary-color-100);
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}
+
+.header__container {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary-color-25);
+}

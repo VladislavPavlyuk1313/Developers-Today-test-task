@@ -1,0 +1,26 @@
+.home {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+app-search-bar {
+  align-self: center;
+}
+
+.home__all-countries {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: var(--primary-color-50);
+  align-self: center;
+  color: var(--primary-color-700);
+  font-size: 32px;
+  font-weight: 900;
+
+  &:hover {
+    border: 1px solid var(--primary-color-100);
+  }
+}
+
+

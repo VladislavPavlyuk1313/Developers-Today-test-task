@@ -8,6 +8,7 @@ import { provideStore } from '@ngxs/store';
 import {AppState} from "./state/app.state";
 import {CountriesService} from "./services/contries.service";
 import {HolidayService} from "./services/holiday.service";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
-    provideStore([AppState]),
+    provideStore([AppState]), provideAnimationsAsync(), provideAnimationsAsync(),
   ]
 };

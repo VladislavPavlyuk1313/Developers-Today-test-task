@@ -1,0 +1,144 @@
+.country-page {
+  padding: 24px 0;
+}
+
+.country-page__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.country-page__common-name {
+  color: var(--primary-color-600);
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.country-page__official-name {
+  color: var(--primary-color-400);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.holidays {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.holidays__header {
+  color: var(--primary-color-600);
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.year-control__label {
+  color: var(--primary-color-600);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.year-control__options {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.year-control__option {
+  padding: 2px 6px;
+  border-radius: 50px;
+  background: var(--primary-color-25);
+  border: 1px solid var(--primary-color-200);
+  color: var(--primary-color-600);
+  font-weight: 900;
+  cursor: pointer;
+
+  &_active {
+    background: var(--primary-color-50);
+    border: 1px solid var(--primary-color-400);
+    color: var(--primary-color-700);
+  }
+
+  &:hover {
+    border: 1px solid var(--primary-color-400);
+    color: var(--primary-color-700);
+  }
+}
+
+.holidays__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.holiday-card {
+  flex: 1 1 30%;
+  border-radius: 16px;
+  border: 1px solid var(--primary-color-100);
+  overflow: hidden;
+}
+
+.holiday-card__header {
+  padding: 8px 16px;
+  background: linear-gradient(150deg, var(--primary-color-600), var(--primary-color-500));
+  color: var(--primary-color-25);
+  font-size: 18px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.holiday-card__date {
+  color: var(--primary-color-50);
+  font-size: 14px;
+}
+
+.holiday-card__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.holiday-card__local-name,
+.holiday-card__type {
+  display: flex;
+  justify-content: space-between;
+
+  & > span:last-child {
+    color: var(--primary-color-600);
+    font-weight: 900;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .holiday-card {
+    flex: 1 1 40%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .holiday-card {
+    flex: 1 1 100%;
+  }
+
+  .year-control__options {
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .holidays__header {
+    margin-top: 16px;
+  }
+}
+

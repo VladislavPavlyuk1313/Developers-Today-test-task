@@ -18,16 +18,6 @@ import {FooterComponent} from "./components/footer/footer.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'DevelopersTodayTestTask';
-
-  protected countries$: Observable<AppStateModel['countries']>;
-
-  constructor(private  store: Store) {
-    this.countries$ = this.store.select(AppState.countries);
-  }
-
-  ngOnInit() {
-    this.countries$.subscribe(res => console.log(res));
-  }
 }

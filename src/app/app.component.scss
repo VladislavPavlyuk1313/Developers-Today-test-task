@@ -1,0 +1,10 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  background: var(--primary-color-25);
+  flex: 1 1 auto;
+}
