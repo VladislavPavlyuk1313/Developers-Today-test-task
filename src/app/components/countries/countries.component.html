@@ -10,9 +10,7 @@
             track country.countryCode
           ) {
             <div class="countries-list__item">
-              <a [routerLink]="['/countries', country.countryCode]">{{
-                country.name
-              }}</a>
+              <a [routerLink]="[country.countryCode]">{{ country.name }}</a>
             </div>
           }
         </div>

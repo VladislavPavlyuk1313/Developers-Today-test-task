@@ -16,7 +16,7 @@
         ) {
           <div class="country-card">
             <div class="country-card__header">
-              <a [routerLink]="['/countries', country.countryCode]">
+              <a [routerLink]="[COUNTRIES_PATH, country.countryCode]">
                 {{
                   extracted.countriesInfoDict?.[country.countryCode]?.commonName
                 }}

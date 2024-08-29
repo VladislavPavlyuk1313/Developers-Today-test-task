@@ -1,0 +1,31 @@
+.not-found-page {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-page__header {
+  font-size: 200px;
+  font-weight: 600;
+  line-height: 200px;
+  background: -webkit-linear-gradient(
+    45deg,
+    var(--primary-color-100),
+    var(--primary-color-800)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.not-found-page__label {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--primary-color-500);
+  text-align: center;
+
+  & > a {
+    text-decoration: underline;
+  }
+}

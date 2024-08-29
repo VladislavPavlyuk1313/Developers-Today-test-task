@@ -11,6 +11,7 @@ import { Store } from '@ngxs/store';
 import { AppState } from '../../state/app.state';
 import { MatIcon } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { COUNTRIES_PATH } from '../../app.routes';
 
 @Component({
   selector: 'app-search-bar',
@@ -56,4 +57,6 @@ export class SearchBarComponent implements OnInit {
       ...countries.filter((country) => containsValueRegex.test(country.name)),
     ];
   }
+
+  protected readonly COUNTRIES_PATH = COUNTRIES_PATH;
 }

@@ -4,21 +4,26 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { CountryComponent } from './components/country/country.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+export const HOME_PATH = '';
+export const COUNTRIES_PATH = 'countries';
+export const NOT_FOUND_PATH = 'not-found';
+export const COUNTRY_CODE_PARAM_NAME = 'countryCode';
+
 export const routes: Routes = [
   {
-    path: '',
+    path: HOME_PATH,
     component: HomeComponent,
   },
   {
-    path: 'countries/:code',
+    path: `${COUNTRIES_PATH}/:${COUNTRY_CODE_PARAM_NAME}`,
     component: CountryComponent,
   },
   {
-    path: 'countries',
+    path: COUNTRIES_PATH,
     component: CountriesComponent,
   },
   {
-    path: '**',
+    path: NOT_FOUND_PATH,
     component: NotFoundComponent,
   },
 ];

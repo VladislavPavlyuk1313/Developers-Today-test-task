@@ -6,7 +6,7 @@
     @for (option of options$ | async; track option.countryCode) {
       <mat-option
         [value]="option.name"
-        [routerLink]="['/countries', option.countryCode]"
+        [routerLink]="[COUNTRIES_PATH, option.countryCode]"
       >
         {{ option.name }}
       </mat-option>

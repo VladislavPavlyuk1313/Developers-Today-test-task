@@ -6,6 +6,7 @@ import { AppState } from '../../state/app.state';
 import { Country } from '../../symbols';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { COUNTRIES_PATH } from '../../app.routes';
 
 @Component({
   selector: 'app-countries',
@@ -45,4 +46,6 @@ export class CountriesComponent implements OnInit {
       map((groupedCountries) => Object.keys(groupedCountries)),
     );
   }
+
+  protected readonly COUNTRIES_PATH = COUNTRIES_PATH;
 }

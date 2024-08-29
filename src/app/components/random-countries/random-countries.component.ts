@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {filter, Observable, Subscription, take} from 'rxjs';
+import { filter, Observable, Subscription, take } from 'rxjs';
 import { AppStateModel } from '../../state/app.model';
 import { Store } from '@ngxs/store';
 import { AppState } from '../../state/app.state';
@@ -11,6 +11,7 @@ import {
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
+import { COUNTRIES_PATH } from '../../app.routes';
 
 @Component({
   selector: 'app-random-countries',
@@ -40,7 +41,7 @@ export class RandomCountriesComponent implements OnInit {
           filter((countries) => countries.length > 0),
           take(1),
         )
-        .subscribe((countries) => this.selectRandomCountries(countries))
+        .subscribe((countries) => this.selectRandomCountries(countries)),
     );
   }
 
@@ -58,4 +59,6 @@ export class RandomCountriesComponent implements OnInit {
     const shuffled = array.slice().sort(() => Math.random() - 0.5);
     return shuffled.slice(0, n);
   }
+
+  protected readonly COUNTRIES_PATH = COUNTRIES_PATH;
 }

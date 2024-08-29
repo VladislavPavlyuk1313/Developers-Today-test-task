@@ -17,6 +17,7 @@ import { FormControl } from '@angular/forms';
 import { CountryCode, CountryInfo, PublicHoliday } from '../../symbols';
 import { FetchCountryInfo, FetchPublicHolidays } from '../../state/app.actions';
 import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
+import { COUNTRY_CODE_PARAM_NAME, NOT_FOUND_PATH } from '../../app.routes';
 
 @Component({
   selector: 'app-country',
@@ -57,16 +58,18 @@ export class CountryComponent implements OnInit, OnDestroy {
     ])
       .pipe(take(1))
       .subscribe(([params, countries]) => {
+        const countryCode = params[COUNTRY_CODE_PARAM_NAME];
         const isCountryCodeCorrect = countries.some(
-          (country) => country.countryCode === params['code'],
+          (country) => country.countryCode === countryCode,
         );
+
         if (isCountryCodeCorrect) {
-          this.selectedCountryCodeSubject.next(params['code']);
+          this.selectedCountryCodeSubject.next(countryCode);
           this.store.dispatch(
-            new FetchPublicHolidays(this.yearControl.value, params['code']),
+            new FetchPublicHolidays(this.yearControl.value, countryCode),
           );
         } else {
-          this.router.navigate(['/not-found']);
+          this.router.navigate([NOT_FOUND_PATH]);
         }
       });
 
