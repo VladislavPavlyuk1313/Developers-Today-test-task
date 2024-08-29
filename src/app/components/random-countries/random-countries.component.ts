@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, Observable, take } from 'rxjs';
+import {filter, Observable, Subscription, take} from 'rxjs';
 import { AppStateModel } from '../../state/app.model';
 import { Store } from '@ngxs/store';
 import { AppState } from '../../state/app.state';
@@ -25,6 +25,8 @@ export class RandomCountriesComponent implements OnInit {
   protected nextHolidaysDict$: Observable<AppStateModel['nextHolidaysDict']>;
   public selectedCountries: Country[] = [];
 
+  private subscriptions = new Subscription();
+
   constructor(private store: Store) {
     this.countries$ = this.store.select(AppState.countries);
     this.countriesInfoDict$ = this.store.select(AppState.countriesInfoDict);
@@ -32,12 +34,14 @@ export class RandomCountriesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countries$
-      .pipe(
-        filter((countries) => countries.length > 0),
-        take(1),
-      )
-      .subscribe((countries) => this.selectRandomCountries(countries));
+    this.subscriptions.add(
+      this.countries$
+        .pipe(
+          filter((countries) => countries.length > 0),
+          take(1),
+        )
+        .subscribe((countries) => this.selectRandomCountries(countries))
+    );
   }
 
   selectRandomCountries(countries: Country[]) {

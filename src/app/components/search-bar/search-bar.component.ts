@@ -45,8 +45,6 @@ export class SearchBarComponent implements OnInit {
         return this._filterOptions(value, countries);
       }),
     );
-
-    this.options$.subscribe((res) => console.log(res));
   }
 
   private _filterOptions(searchValue: string, countries: Country[]): Country[] {

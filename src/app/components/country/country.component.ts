@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   BehaviorSubject,
   combineLatest,
@@ -6,6 +6,7 @@ import {
   map,
   Observable,
   startWith,
+  Subscription,
   take,
 } from 'rxjs';
 import { AppStateModel } from '../../state/app.model';
@@ -24,7 +25,7 @@ import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
   templateUrl: './country.component.html',
   styleUrl: './country.component.scss',
 })
-export class CountryComponent implements OnInit {
+export class CountryComponent implements OnInit, OnDestroy {
   protected yearOptions = [
     2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
   ];
@@ -38,6 +39,8 @@ export class CountryComponent implements OnInit {
 
   protected selectedCountryInfo$: Observable<CountryInfo>;
   protected selectedHolidays$: Observable<PublicHoliday[]>;
+
+  private subscriptions = new Subscription();
 
   constructor(
     private store: Store,
@@ -88,17 +91,25 @@ export class CountryComponent implements OnInit {
       ),
     );
 
-    this.selectedCountryCode$.subscribe((countryCode) => {
-      this.store.dispatch(new FetchCountryInfo(countryCode));
-    });
+    this.subscriptions.add(
+      this.selectedCountryCode$.subscribe((countryCode) => {
+        this.store.dispatch(new FetchCountryInfo(countryCode));
+      }),
+    );
 
-    combineLatest([
-      this.selectedCountryCode$,
-      this.yearControl.valueChanges.pipe(startWith(this.yearControl.value)),
-    ]).subscribe(([selectedCountryCode, selectedYear]) => {
-      this.store.dispatch(
-        new FetchPublicHolidays(selectedYear, selectedCountryCode),
-      );
-    });
+    this.subscriptions.add(
+      combineLatest([
+        this.selectedCountryCode$,
+        this.yearControl.valueChanges.pipe(startWith(this.yearControl.value)),
+      ]).subscribe(([selectedCountryCode, selectedYear]) => {
+        this.store.dispatch(
+          new FetchPublicHolidays(selectedYear, selectedCountryCode),
+        );
+      }),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }
